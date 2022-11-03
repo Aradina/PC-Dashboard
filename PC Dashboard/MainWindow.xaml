@@ -1,0 +1,120 @@
+﻿<Window x:Class="PC_Dashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PC_Dashboard"
+        xmlns:viewModel="clr-namespace:PC_Dashboard.MVVM.ViewModel"
+        xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+        mc:Ignorable="d"
+        Height="1080" Width="1920"
+        WindowStyle="ThreeDBorderWindow"
+        WindowState="Maximized"
+        ResizeMode="CanResize"
+        Background="Transparent"
+        x:Name="_mainWindow">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                <GradientStop Color="#1f74ad" Offset="0.0"/>
+                <GradientStop Color="#1F2DAD" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="aaaa"
+                       Grid.Row="0"
+                       Focusable="False"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="14"
+                       TextWrapping="Wrap"
+                       Margin="10, 0, 0, 0"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <RadioButton Content="Dashboard"
+                             Name="dashboardButton"
+                             GroupName="MenuButton"
+                             IsTabStop="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding DashboardViewCommand}"
+                             GotFocus="MenuButton_GotFocus"/>
+                    <RadioButton Content="All Games"
+                             Name="allButton"
+                             GroupName="MenuButton"
+                             IsTabStop="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding AllGamesViewCommand}"
+                             GotFocus="MenuButton_GotFocus"/>
+                    <RadioButton Content="Categories"
+                             Name="categoriesButton"
+                             GroupName="MenuButton"
+                             IsTabStop="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding CategoriesViewCommand}"
+                             GotFocus="MenuButton_GotFocus"/>
+                    <RadioButton Content="Search"
+                             Name="searchButton"
+                             GroupName="MenuButton"
+                             IsTabStop="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SearchViewCommand}"
+                             GotFocus="MenuButton_GotFocus"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Stretch">
+                    <RadioButton Content="What's New"
+                             Name="updatesButton"
+                             GroupName="MenuButton"
+                             IsTabStop="True"
+                             IsChecked="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HomeViewCommand}"
+                             GotFocus="MenuButton_GotFocus"/>
+                    <RadioButton Content="Settings"
+                             IsTabStop="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SettingsViewCommand}"
+                             GotFocus="MenuButton_GotFocus"/>
+
+                    <!-- Style this better later. Exit button should stand out slightly. -->
+                    <Border BorderThickness="2"
+                        BorderBrush="#246f9d">
+                        <RadioButton Content="Exit"
+                                 IsTabStop="True"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0"
+                            IsTabStop="False"
+                            Content="{Binding CurrentView}"
+                            Focusable="False"/>
+        </Grid>
+
+
+
+    </Border>
+</Window>

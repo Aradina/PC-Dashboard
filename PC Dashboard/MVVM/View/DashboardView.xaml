@@ -1,0 +1,640 @@
+﻿<UserControl x:Class="PC_Dashboard.MVVM.View.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PC_Dashboard.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920"
+             HorizontalContentAlignment="Stretch"
+             VerticalContentAlignment="Stretch">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False">
+        <Grid Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0"
+                    Height="50"
+                    Width="auto"
+                    CornerRadius="15">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#1FAD9F" Offset="0.0"/>
+                        <GradientStop Color="#1F2DAD" Offset="0.2"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="Recent games placeholder"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           FontSize="33"
+                           Margin="20, 0, 0, 0"/>
+            </Border>
+            <ScrollViewer Grid.Row="1"
+                          Background="Transparent"
+                          HorizontalAlignment="Right"
+                          Width="auto" 
+                          Height="auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled"
+                          CanContentScroll="False">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Border Grid.Row="2"
+                    Height="50"
+                    Width="auto"
+                    CornerRadius="15">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#1FAD9F" Offset="0.0"/>
+                        <GradientStop Color="#1F2DAD" Offset="0.2"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="New release placeholder"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           FontSize="33"
+                           Margin="20, 0, 0, 0"/>
+            </Border>
+            <ScrollViewer Grid.Row="3"
+                          Background="Transparent"
+                          HorizontalAlignment="Right"
+                          Width="auto" 
+                          Height="auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled"
+                          CanContentScroll="False">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Border Grid.Row="4"
+                    Height="50"
+                    Width="auto"
+                    CornerRadius="15">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#1FAD9F" Offset="0.0"/>
+                        <GradientStop Color="#1F2DAD" Offset="0.2"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="hey it's a placeholder"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           FontSize="33"
+                           Margin="20, 0, 0, 0"/>
+            </Border>
+            <ScrollViewer Grid.Row="5"
+                          Background="Transparent"
+                          HorizontalAlignment="Right"
+                          Width="auto" 
+                          Height="auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled"
+                          CanContentScroll="False">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Border Grid.Row="6"
+                    Height="50"
+                    Width="auto"
+                    CornerRadius="15">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#1FAD9F" Offset="0.0"/>
+                        <GradientStop Color="#1F2DAD" Offset="0.2"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Text="other placeholder"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           FontSize="33"
+                           Margin="20, 0, 0, 0"/>
+            </Border>
+            <ScrollViewer Grid.Row="7"
+                          Background="Transparent"
+                          HorizontalAlignment="Right"
+                          Width="auto" 
+                          Height="auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled"
+                          CanContentScroll="False">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="gametitle"
+                                       Foreground="White"
+                                       FontSize="28"
+                                       Margin="20,10,10,0"/>
+                            <TextBlock Text="gameinfo"
+                                       Foreground="White"
+                                       FontSize="18"
+                                       Margin="20,10,10,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

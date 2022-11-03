@@ -75,7 +75,7 @@
                     <Setter Property="Margin" Value="15, 0, 0, 0"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBlock Text="Idk recently added or shit"
+            <TextBlock Text="Idk recently added"
                    Foreground="White"
                    FontSize="25"
                    HorizontalAlignment="Left"

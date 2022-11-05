@@ -1,0 +1,40 @@
+[
+  {
+    "LauncherId": 3,
+    "Id": "1207659443",
+    "Name": "Amnesia - A Machine For Pigs",
+    "OverrideDisplayName": "",
+    "PublisherName": "",
+    "Url": null,
+    "GameRoot": "C:\\Games\\Amnesia - A Machine For Pigs",
+    "Executable": "C:\\Games\\Amnesia - A Machine For Pigs\\redist\\Launcher.exe",
+    "OtherExecutable": null,
+    "LaunchParameters": null,
+    "InstallDir": null,
+    "AppImagePath": "C:\\Games\\Amnesia - A Machine For Pigs",
+    "AppIcon": "",
+    "HeaderImage": "",
+    "LibraryCard": "C:\\ProgramData\\GOG.com\\Galaxy\\webcache\\48537299898879261\\gog\\1207659443\\132f6bc800287ab73a8a23d4b7358c315c2bf7e4b8506918966cbcef0cb6aa6b_glx_vertical_cover.webp",
+    "InstalledDateUnix": 0,
+    "InstalledDate": null
+  },
+  {
+    "LauncherId": 3,
+    "Id": "1441974651",
+    "Name": "Prison Architect",
+    "OverrideDisplayName": "",
+    "PublisherName": "",
+    "Url": null,
+    "GameRoot": "C:\\Games\\Prison Architect",
+    "Executable": "C:\\Games\\Prison Architect\\Launcher\\dowser.exe",
+    "OtherExecutable": null,
+    "LaunchParameters": null,
+    "InstallDir": null,
+    "AppImagePath": "C:\\Games\\Prison Architect",
+    "AppIcon": "",
+    "HeaderImage": "",
+    "LibraryCard": "C:\\ProgramData\\GOG.com\\Galaxy\\webcache\\48537299898879261\\gog\\1441974651\\824738dd3534fba4838d9d4920cc0a780c9dea998a5d45f28a93fbb3bacdcaff_glx_vertical_cover.webp",
+    "InstalledDateUnix": 0,
+    "InstalledDate": null
+  }
+]

@@ -100,12 +100,27 @@ namespace PC_Dashboard
         /// Moves focus between UI Elements on the MainWindow.
         /// </summary>
         /// <param name="direction">The direction to move focus.</param>
-        private static void MoveFocus(FocusNavigationDirection direction)
+        private void MoveFocus(FocusNavigationDirection direction)
         {
             var request = new TraversalRequest(direction);
             if (Keyboard.FocusedElement is UIElement elementWithFocus)
             {
-                _ = elementWithFocus.MoveFocus(request);
+                bool moved = elementWithFocus.MoveFocus(request);
+                if (!moved && direction == FocusNavigationDirection.Left)
+                {
+                    FrameworkElement focusScope = (FrameworkElement)FocusManager.GetFocusScope(elementWithFocus);
+                    MoveToMenu(focusScope);
+                }
+            }
+        }
+
+        private void MoveToMenu(FrameworkElement focusScope)
+        {
+            switch (focusScope.Name)
+            {
+                case "TileListView":
+                    allButton.Focus();
+                    break;
             }
         }
 

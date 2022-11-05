@@ -15,69 +15,19 @@ namespace PC_Dashboard.MVVM.ViewModel
         /// <returns>List of Game.</returns>
         public static List<Game> Parse()
         {
-            if (File.Exists(Path.Combine(Environment.CurrentDirectory, @"Resources\json\XboxApps.json")))
+            string jsonPath = Path.Combine(Environment.CurrentDirectory, @"Resources\json\XboxApps.json");
+            if (File.Exists(jsonPath))
             {
-                return ReadFromJson();
+                return Utilities.ReadFromJson(jsonPath);
             }
             else
             {
                 List<string> gameRoots = GetXboxRoot();
-                var apps = GetAppInfo(gameRoots);
-                WriteToJson(apps);
-                return ReadFromJson();
-            }
-        }
-
-        static void WriteToJson(List<Game> e)
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, @"Resources\json\XboxApps.json");
-            var apps = new List<Game>();
-
-            foreach (Game app in e)
-            {
-                Game xboxApp = new()
-                {
-                    LauncherId = 2,
-                    Id = app.Id,
-                    Name = app.Name,
-                    OverrideDisplayName = app.OverrideDisplayName,
-                    PublisherName = app.PublisherName,
-                    Url = app.Url,
-                    GameRoot = app.GameRoot,
-                    Executable = app.Executable,
-                    OtherExecutable = app.OtherExecutable,
-                    AppImagePath = app.GameRoot,
-                    AppIcon = Path.Combine(app.GameRoot, app.AppIcon),
-                    HeaderImage = Path.Combine(app.GameRoot, app.HeaderImage),
-                    LibraryCard = Path.Combine(app.GameRoot, app.LibraryCard),
-
-                };
-                apps.Add(xboxApp);
-            }
-
-            using (StreamWriter file = File.CreateText(path))
-            {
-                JsonSerializer serializer = new();
-                serializer.Formatting = Newtonsoft.Json.Formatting.Indented;
-                serializer.Serialize(file, apps);
-            }
-        }
-        /// <summary>
-        /// Reads the saved json file containing steam app information.
-        /// </summary>
-        /// <returns>A Steamapp list from the json.</returns>
-        public static List<Game> ReadFromJson()
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, @"Resources\json\XboxApps.json");
-            using (StreamReader file = new StreamReader(path))
-            {
-                string json = file.ReadToEnd();
-                List<Game> apps = JsonConvert.DeserializeObject<List<Game>>(json);
+                List<Game> apps = GetAppInfo(gameRoots);
+                Utilities.WriteToJson(apps, jsonPath);
                 return apps;
             }
         }
-
-
 
 
         /// <summary>
@@ -145,9 +95,9 @@ namespace PC_Dashboard.MVVM.ViewModel
                         PublisherName = shellVisuals.Attributes.GetNamedItem("PublisherDisplayName").InnerText,
                         GameRoot = root,
                         OverrideDisplayName = "",
-                        HeaderImage = shellVisuals.Attributes.GetNamedItem("SplashScreenImage").InnerText,
-                        AppIcon = shellVisuals.Attributes.GetNamedItem("Square44x44Logo").InnerText,
-                        LibraryCard = shellVisuals.Attributes.GetNamedItem("SplashScreenImage").InnerText,
+                        HeaderImage = Path.Combine(root, shellVisuals.Attributes.GetNamedItem("SplashScreenImage").InnerText),
+                        AppIcon = Path.Combine(root, shellVisuals.Attributes.GetNamedItem("Square44x44Logo").InnerText),
+                        LibraryCard = Path.Combine(root, shellVisuals.Attributes.GetNamedItem("SplashScreenImage").InnerText),
                     };
 
                     if (xmlFile.DocumentElement.SelectSingleNode(@"ExecutableList").ChildNodes.Count > 1)

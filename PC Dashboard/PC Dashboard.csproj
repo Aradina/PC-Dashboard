@@ -8,8 +8,11 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\Icons\controllericon.png" />
+    <None Remove="Images\Icons\exitbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -22,6 +25,14 @@
     <PackageReference Include="ValveKeyValue" Version="0.8.2.162" />
     <PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
     <PackageReference Include="XInputium" Version="1.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\controllericon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Icons\exitbutton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">

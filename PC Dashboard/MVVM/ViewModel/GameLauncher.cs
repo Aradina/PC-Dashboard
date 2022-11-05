@@ -26,8 +26,20 @@ namespace PC_Dashboard.MVVM.ViewModel
                 case 2:
                     LaunchXboxGame(game);
                     break;
+                case 3:
+                    LaunchGogGame(game);
+                    break;
             }
             
+        }
+
+        static void LaunchGogGame(Game game)
+        {
+            ProcessStartInfo processStartInfo = new()
+            {
+                FileName = game.Executable,
+            };
+            Process.Start(processStartInfo);
         }
 
         static void LaunchSteamGame(Game game)

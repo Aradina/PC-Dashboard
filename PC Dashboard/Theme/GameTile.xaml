@@ -18,7 +18,7 @@
                         <ContentPresenter Focusable="False"/>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="UIElement.GotFocus">
+                        <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Duration="0:0:0.5" From="0.7" To="1" Storyboard.TargetName="ListButtonBackground" Storyboard.TargetProperty="Opacity"/>
@@ -26,7 +26,7 @@
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
-                        <EventTrigger RoutedEvent="UIElement.LostFocus">
+                        <EventTrigger RoutedEvent="UIElement.LostKeyboardFocus">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Duration="0:0:0.5" From="1" To="0.7" Storyboard.TargetName="ListButtonBackground" Storyboard.TargetProperty="Opacity"/>

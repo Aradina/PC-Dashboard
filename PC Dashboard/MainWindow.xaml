@@ -36,15 +36,20 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="aaaa"
-                       Grid.Row="0"
-                       Focusable="False"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="14"
-                       TextWrapping="Wrap"
-                       Margin="10, 0, 0, 0"/>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/Icons/controllericon.png"
+                       HorizontalAlignment="Left">
+                </Image>
+                <TextBlock Text="Aaaa" 
+                           VerticalAlignment="Center"
+                           FontSize="22"
+                           Foreground="White">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="1"
+                                          Color="AliceBlue"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -82,7 +87,7 @@
                              Command="{Binding SearchViewCommand}"
                              GotFocus="MenuButton_GotFocus"/>
                 </StackPanel>
-                <StackPanel Grid.Row="2" VerticalAlignment="Stretch">
+                <StackPanel Grid.Row="2" VerticalAlignment="Center">
                     <RadioButton Content="What's New"
                              Name="updatesButton"
                              GroupName="MenuButton"
@@ -98,11 +103,11 @@
                              GotFocus="MenuButton_GotFocus"/>
 
                     <!-- Style this better later. Exit button should stand out slightly. -->
-                    <Border BorderThickness="2"
-                        BorderBrush="#246f9d">
+                    <Border BorderThickness="1"
+                        BorderBrush="#1f74ad">
                         <RadioButton Content="Exit"
-                                 IsTabStop="True"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                     IsTabStop="True"
+                                     Style="{StaticResource MenuButtonTheme}"/>
                     </Border>
                 </StackPanel>
             </Grid>

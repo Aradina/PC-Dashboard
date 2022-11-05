@@ -1,6 +1,8 @@
-﻿namespace PC_Dashboard
+﻿using System;
+
+namespace PC_Dashboard
 {
-    public class Game
+    public class Game : IComparable<Game>
     {
         public int LauncherId { get; set; }
         public string Id { get; set; }
@@ -20,5 +22,14 @@
         public int InstalledDateUnix { get; set; }
         public string InstalledDate { get; set; }
 
+        public int CompareTo(Game other)
+        {
+            if(null == other)
+            {
+                return 1;
+            }
+            return string.Compare(this.Name, other.Name);
+
+        }
     }
 }

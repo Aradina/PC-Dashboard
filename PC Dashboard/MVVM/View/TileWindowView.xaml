@@ -15,7 +15,9 @@
     <Grid>
         <ListView Style="{StaticResource GameTileList}" 
                   ItemsSource="{Binding AllGames}"
+                  x:Name="TileListView"
                   Focusable="False"
-                  IsTabStop="False"/>
+                  IsTabStop="False"
+                  FocusManager.IsFocusScope="True"/>
     </Grid>
 </UserControl>

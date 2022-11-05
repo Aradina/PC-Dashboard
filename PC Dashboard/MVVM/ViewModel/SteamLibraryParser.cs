@@ -22,74 +22,16 @@ namespace PC_Dashboard.MVVM.ViewModel
         /// <returns>List of Game.</returns>
         public static List<Game> Parse()
         {
-            if (File.Exists(Path.Combine(Environment.CurrentDirectory, @"Resources\json\SteamApps.json")))
+            string jsonPath = Path.Combine(Environment.CurrentDirectory, @"Resources\json\SteamApps.json");
+            if (File.Exists(jsonPath))
             {
-                return ReadFromJson();
+                return Utilities.ReadFromJson(jsonPath);
             }
             else
             {
                 var steamLibraries = GetSteamLibraries();
                 var apps = GetSteamApps(steamLibraries);
-                WriteToJson(apps);
-                return ReadFromJson();
-            }
-        }
-
-        /// <summary>
-        /// Writes the Steam app information to a json file for later use between program restarts.
-        /// </summary>
-        /// <param name="e">An AppInfo object.</param>
-        static void WriteToJson(List<Game> e)
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, @"Resources\json\SteamApps.json");
-            var apps = new List<Game>();
-            string cachePath = GetSteamImageCachePath();
-
-            foreach (Game app in e)
-            {
-                if(app.Name != "Steamworks Common Redistributables")
-                {
-                    Game steamapps = new()
-                    {
-                        LauncherId = 1,
-                        Id = app.Id,
-                        Name = app.Name,
-                        PublisherName = "",
-                        LaunchParameters = app.LaunchParameters,
-                        GameRoot = app.GameRoot,
-                        Executable = app.Executable,
-                        InstallDir = app.InstallDir,
-                        InstalledDateUnix = app.InstalledDateUnix,
-                        InstalledDate = Utilities.UnixToDateTime(app.InstalledDateUnix).Date.ToString("d"),
-                        AppImagePath = cachePath,
-                        AppIcon = Path.Combine(cachePath, $"{app.Id}_icon.jpg"),
-                        HeaderImage = Path.Combine(cachePath, $"{app.Id}_header.jpg"),
-                        LibraryCard = Path.Combine(cachePath, $"{app.Id}_library_600x900.jpg")
-
-                    };
-                    apps.Add(steamapps);
-                }
-                
-            }
-
-            using (StreamWriter file = File.CreateText(path))
-            {
-                JsonSerializer serializer = new();
-                serializer.Formatting = Formatting.Indented;
-                serializer.Serialize(file, apps);
-            }
-        }
-        /// <summary>
-        /// Reads the saved json file containing steam app information.
-        /// </summary>
-        /// <returns>A Steamapp list from the json.</returns>
-        public static List<Game> ReadFromJson()
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, @"Resources\json\SteamApps.json");
-            using (StreamReader file = new(path))
-            {
-                string json = file.ReadToEnd();
-                List<Game> apps = JsonConvert.DeserializeObject<List<Game>>(json);
+                Utilities.WriteToJson(apps, jsonPath);
                 return apps;
             }
         }
@@ -118,6 +60,7 @@ namespace PC_Dashboard.MVVM.ViewModel
         {
             var metaLines = File.ReadAllLines(appMetaFile);
             var dic = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            string cachePath = GetSteamImageCachePath();
 
             foreach (var line in metaLines)
             {
@@ -134,7 +77,7 @@ namespace PC_Dashboard.MVVM.ViewModel
 
             if (dic.Keys.Count > 0)
             {
-                appInfo = new Game();
+                
                 var appId = dic["appid"];
                 var name = dic["name"];
                 var installDir = dic["installDir"];
@@ -147,14 +90,30 @@ namespace PC_Dashboard.MVVM.ViewModel
                 {
                     return null;
                 }
+                if(name != "Steamworks Common Redistributables")
+                {
+                    appInfo = new Game
+                    {
+                        LauncherId = 1,
+                        Id = appId,
+                        Name = name,
+                        OverrideDisplayName = "",
+                        PublisherName = "",
+                        Url = "",
+                        GameRoot = libraryGameRoot,
+                        LaunchParameters = $"steam://rungameid/{appId}",
+                        InstallDir = installDir,
+                        AppImagePath = cachePath,
+                        AppIcon = Path.Combine(cachePath, $"{appId}_icon.jpg"),
+                        HeaderImage = Path.Combine(cachePath, $"{appId}_header.jpg"),
+                        LibraryCard = Path.Combine(cachePath, $"{appId}_library_600x900.jpg"),
+                        InstalledDateUnix = int.Parse(installDate),
+                        InstalledDate = Utilities.UnixToDateTime(int.Parse(installDate)).Date.ToString("d"),
+                    };
 
-                appInfo.Id = appId;
-                appInfo.Name = name;
-                appInfo.GameRoot = libraryGameRoot;
-                appInfo.InstallDir = installDir;
-                appInfo.InstalledDateUnix = int.Parse(installDate);
-                appInfo.LaunchParameters = $"steam://rungameid/{appId}";
-                appInfo.Executable = GetExecutable(appInfo);
+                    appInfo.Executable = GetExecutable(appInfo);
+
+                }
             }
             return appInfo;
         }
@@ -230,7 +189,6 @@ namespace PC_Dashboard.MVVM.ViewModel
         /// Gets the Steam libraries from the libraryfolders.vdf file in the steam directory.
         /// </summary>
         /// <returns>A list of Steam library paths. </returns>
-
         static List<string> GetSteamLibraries()
         {
             string libpath = Path.Combine(GetSteamPath(), @"steamapps\libraryfolders.vdf");
@@ -254,7 +212,6 @@ namespace PC_Dashboard.MVVM.ViewModel
         /// Gets the steam install path via the registry.
         /// </summary>
         /// <returns>The path to the Steam install folder.</returns>
-
         public static string GetSteamPath()
         {
             string steamPath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Valve\Steam", "SteamPath", null).ToString();
@@ -265,7 +222,6 @@ namespace PC_Dashboard.MVVM.ViewModel
         /// Gets the path to the steam library image cache.
         /// </summary>
         /// <returns>The path to the Steam library image cache.</returns>
-
         static string GetSteamImageCachePath()
         {
             string SteamPath = GetSteamPath();

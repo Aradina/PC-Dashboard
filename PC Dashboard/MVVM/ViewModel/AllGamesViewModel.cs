@@ -21,7 +21,8 @@ namespace PC_Dashboard.MVVM.ViewModel
             List<Game> gamesList = new();
             gamesList.AddRange(SteamLibraryParser.Parse());
             gamesList.AddRange(XboxStoreParser.Parse());
-            
+            gamesList.AddRange(GOGGalaxyParser.Parse());
+            gamesList.Sort();
             for (int i = 0; i < gamesList.Count; i++)
             {
                 AllGames.Add(gamesList[i]);

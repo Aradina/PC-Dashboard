@@ -4,9 +4,9 @@ This is an exceptionally work in progress program to allow for easy management o
 
 ## Current Features
 
-Imports installed games from Steam and Xbox, presents them in a grid. Click to launch. 
+Imports installed games from Steam, Xbox or GOG Galaxy, presents them in a grid. Click or press A on a gamepad to launch. 
 
-Controller support largely functions for UI navigation.
+Controller support largely functions for UI navigation. Only tested with Xbox controller.
 
 ## Planned Features
 

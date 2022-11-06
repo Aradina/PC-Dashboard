@@ -1,5 +1,8 @@
 ﻿using PC_Dashboard.Core;
+using PC_Dashboard.MVVM.Model;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PC_Dashboard.MVVM.ViewModel
 {
@@ -16,8 +19,10 @@ namespace PC_Dashboard.MVVM.ViewModel
         public RelayCommand CategoriesViewCommand { get; set; }
 
         public RelayCommand SearchViewCommand { get; set; }
+        public RelayCommand ExitProgramCommand { get; set; }
 
         public RelayCommand GameLauncherCommand { get; set; }
+
 
 
         public HomeViewModel HomeVM { get; set; }
@@ -49,8 +54,6 @@ namespace PC_Dashboard.MVVM.ViewModel
 
         public MainViewModel()
         {
-
-
             HomeVM = new HomeViewModel();
             DashboardVM = new DashboardViewModel();
             AllGamesVM = new AllGamesViewModel();
@@ -90,6 +93,12 @@ namespace PC_Dashboard.MVVM.ViewModel
             SearchViewCommand = new RelayCommand(o =>
             {
                 CurrentView = SearchVM;
+            });
+
+            ExitProgramCommand = new RelayCommand(o =>
+            {
+                Window window = (Window)o;
+                window.Close();
             });
 
             GameLauncherCommand = new RelayCommand(o =>

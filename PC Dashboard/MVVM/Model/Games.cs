@@ -15,6 +15,7 @@ namespace PC_Dashboard
         public string OtherExecutable { get; set; }
         public string LaunchParameters { get; set; }
         public string InstallDir { get; set; }
+        public int InstallSize { get; set; }
         public string AppImagePath { get; set; }
         public string AppIcon { get; set; }
         public string HeaderImage { get; set; }
@@ -29,7 +30,6 @@ namespace PC_Dashboard
                 return 1;
             }
             return string.Compare(this.Name, other.Name);
-
         }
     }
 }

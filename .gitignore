@@ -367,3 +367,5 @@ FodyWeavers.xsd
 XboxApps.json
 SteamApps.json
 GogApps.json 
+/Resources/json/EAApps.json
+/Images

@@ -83,7 +83,6 @@ namespace PC_Dashboard
 
         }
 
-
         private static void SelectElement()
         {
             if (Keyboard.FocusedElement is UIElement elementWithFocus)
@@ -94,7 +93,6 @@ namespace PC_Dashboard
                 }
             }
         }
-
 
         /// <summary>
         /// Moves focus between UI Elements on the MainWindow.

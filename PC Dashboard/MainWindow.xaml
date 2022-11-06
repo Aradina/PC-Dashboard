@@ -107,7 +107,9 @@
                         BorderBrush="#1f74ad">
                         <RadioButton Content="Exit"
                                      IsTabStop="True"
-                                     Style="{StaticResource MenuButtonTheme}"/>
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding ExitProgramCommand}"
+                                     CommandParameter="{Binding ElementName=_mainWindow}"/>
                     </Border>
                 </StackPanel>
             </Grid>

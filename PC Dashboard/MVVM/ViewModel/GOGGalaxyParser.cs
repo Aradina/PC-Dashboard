@@ -40,7 +40,6 @@ namespace PC_Dashboard.MVVM.ViewModel
                 using(RegistryKey subKey = regKey.OpenSubKey(subKeyName))
                 {   
                     string gogCachePath = GetGogImageCachePath();
-
                     string libraryCard = GogLibraryCard(Path.Combine(gogCachePath, subKey.GetValue("gameID").ToString()));
                     var game = new Game()
                     {
@@ -57,11 +56,9 @@ namespace PC_Dashboard.MVVM.ViewModel
                         LibraryCard = libraryCard,
                     };
                     gogGames.Add(game);
-                }
-                
+                }   
             }
             return gogGames;
-
         }
 
         static string GetGogImageCachePath()

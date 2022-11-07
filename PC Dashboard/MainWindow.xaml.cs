@@ -24,6 +24,7 @@ namespace PC_Dashboard
 
             DeviceManager = new();
             DeviceManager.DeviceConnected += DeviceManager_DeviceConnected;
+            DeviceManager.DeviceDisconnected += DeviceManager_DeviceDisconnected;
             Gamepad = new(null);
             Gamepad.StateChanged += (_, _) => OnGamepadStateChanged();
             Gamepad.ButtonPressed += Gamepad_ButtonPressed;
@@ -127,8 +128,14 @@ namespace PC_Dashboard
         /// </summary>
         protected virtual void OnRendering()
         {
-            DeviceManager.Update();
-            Gamepad.Update();
+            if (Gamepad.IsConnected)
+            {
+                Gamepad.Update();
+            }
+            else
+            {
+                DeviceManager.Update();
+            }
         }
 
         protected virtual void OnGamepadStateChanged()
@@ -149,6 +156,16 @@ namespace PC_Dashboard
         /// </summary>
         private void DeviceManager_DeviceConnected(object? sender, XInputDeviceEventArgs e)
         {
+            if (!Gamepad.IsConnected)
+            {
+                controllerIndicator.Visibility = Visibility.Visible;
+                Gamepad.Device = DeviceManager.ConnectedDevices.FirstOrDefault();
+            }
+        }
+
+        private void DeviceManager_DeviceDisconnected(object? sender, XInputDeviceEventArgs e)
+        {
+            controllerIndicator.Visibility = Visibility.Hidden;
             if (!Gamepad.IsConnected)
             {
                 Gamepad.Device = DeviceManager.ConnectedDevices.FirstOrDefault();

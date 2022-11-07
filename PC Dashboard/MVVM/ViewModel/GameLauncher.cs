@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace PC_Dashboard.MVVM.ViewModel
 {
     class GameLauncher
     {
-
         public static void LaunchGame(Game game)
         {
             if(game is null)
@@ -24,19 +18,28 @@ namespace PC_Dashboard.MVVM.ViewModel
                     LaunchSteamGame(game);
                     break;
                 case 2:
-                    LaunchXboxGame(game);
+                    LaunchAppGeneric(game);
                     break;
                 case 3:
-                    LaunchGogGame(game);
+                    LaunchAppGeneric(game);
                     break;
                 case 4:
-                    LaunchEpicGame(game);
+                    LaunchAppGeneric(game);
+                    break;
+                case 5:
+                    LaunchAppGeneric(game);
+                    break;
+                case 6:
+                    //LaunchBlizzardGame
                     break;
             }
-            
         }
 
-        static void LaunchEpicGame(Game game)
+        /// <summary>
+        /// Launches an exe. Use if all is required is starting the exe. If special parameters are required, make another.
+        /// </summary>
+        /// <param name="game">game object.</param>
+        static void LaunchAppGeneric(Game game)
         {
             ProcessStartInfo processStartInfo = new()
             {
@@ -44,16 +47,10 @@ namespace PC_Dashboard.MVVM.ViewModel
             };
             Process.Start(processStartInfo);
         }
-
-        static void LaunchGogGame(Game game)
-        {
-            ProcessStartInfo processStartInfo = new()
-            {
-                FileName = game.Executable,
-            };
-            Process.Start(processStartInfo);
-        }
-
+        /// <summary>
+        /// Steam games are launched by launching the steam executable with the games uri as a parameter. So we do that.
+        /// </summary>
+        /// <param name="game">game object.</param>
         static void LaunchSteamGame(Game game)
         {
             string steamPath = System.IO.Path.Combine(SteamLibraryParser.GetSteamPath(), @"steam.exe");
@@ -61,16 +58,6 @@ namespace PC_Dashboard.MVVM.ViewModel
             {
                 FileName = steamPath,
                 Arguments = game.LaunchParameters
-            };
-            Process.Start(processStartInfo);
-        }
-
-        static void LaunchXboxGame(Game game)
-        {
-            string exePath = System.IO.Path.Combine(game.GameRoot, game.Executable);
-            ProcessStartInfo processStartInfo = new()
-            {
-                FileName = exePath,
             };
             Process.Start(processStartInfo);
         }

@@ -50,6 +50,15 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
+            <DockPanel HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2">
+                <Image Visibility="Hidden" x:Name="controllerIndicator">
+                    <Image.Source>
+                        <BitmapImage UriSource="/Images/Icons/controllericon.png" 
+                                     DecodePixelWidth="32"
+                                     DecodePixelHeight="32"/>
+                    </Image.Source>
+                </Image>
+            </DockPanel>
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>

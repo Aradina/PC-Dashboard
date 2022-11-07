@@ -21,7 +21,7 @@ namespace PC_Dashboard.MVVM.ViewModel
             List<Game> gamesList = new();
             if (AvailableLaunchers.EALauncher) 
             {
-                
+                gamesList.AddRange(EALauncherParser.Parse());
             }
             if (AvailableLaunchers.XboxLauncher)
             {
@@ -37,7 +37,7 @@ namespace PC_Dashboard.MVVM.ViewModel
             }
             if (AvailableLaunchers.BattleNet)
             {
-                //Need to find a way to import Battlenet games.
+                gamesList.AddRange(BattleNetParser.Parse());
             }
             if (AvailableLaunchers.EpicGamesStore)
             {

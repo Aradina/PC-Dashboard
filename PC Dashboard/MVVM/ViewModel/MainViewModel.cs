@@ -1,5 +1,6 @@
 ﻿using PC_Dashboard.Core;
 using PC_Dashboard.MVVM.Model;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -19,10 +20,10 @@ namespace PC_Dashboard.MVVM.ViewModel
         public RelayCommand CategoriesViewCommand { get; set; }
 
         public RelayCommand SearchViewCommand { get; set; }
+
         public RelayCommand ExitProgramCommand { get; set; }
 
         public RelayCommand GameLauncherCommand { get; set; }
-
 
 
         public HomeViewModel HomeVM { get; set; }
@@ -37,9 +38,8 @@ namespace PC_Dashboard.MVVM.ViewModel
 
         public SearchViewModel SearchVM { get; set; }
 
-
-
-
+        public GamesList GamesList { get; set; } = new GamesList();
+        
         private object _currentView;
 
         public object CurrentView
@@ -54,12 +54,27 @@ namespace PC_Dashboard.MVVM.ViewModel
 
         public MainViewModel()
         {
+
+            var observableList = new ObservableCollection<Game>(GamesList.Games);
+            Debug.WriteLine(observableList);
+
             HomeVM = new HomeViewModel();
+
             DashboardVM = new DashboardViewModel();
-            AllGamesVM = new AllGamesViewModel();
+
+            AllGamesVM = new()
+            {
+                AllGames = observableList
+            };
+
             SettingsVM = new SettingsViewModel();
+
             CategoriesVM = new CategoriesViewModel();
-            SearchVM = new SearchViewModel();
+
+            SearchVM = new()
+            {
+                AllGames = observableList
+            };
 
             CurrentView = HomeVM;
 

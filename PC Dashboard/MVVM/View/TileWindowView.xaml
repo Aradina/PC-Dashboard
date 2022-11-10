@@ -8,10 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
 
-    <UserControl.DataContext>
-        <viewModel:AllGamesViewModel/>
-    </UserControl.DataContext>
-
     <Grid>
         <ListView Style="{StaticResource GameTileList}" 
                   ItemsSource="{Binding AllGames}"

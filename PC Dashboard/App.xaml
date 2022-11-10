@@ -4,8 +4,6 @@
              xmlns:local="clr-namespace:PC_Dashboard"
              xmlns:viewModel="clr-namespace:PC_Dashboard.MVVM.ViewModel"
              xmlns:view="clr-namespace:PC_Dashboard.MVVM.View" 
-             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             xmlns:controls="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -15,6 +13,7 @@
                 <ResourceDictionary Source="Theme/ScrollbarTheme.xaml"/>
                 <ResourceDictionary Source="Theme/GameListTheme.xaml"/>
                 <ResourceDictionary Source="Theme/GameTile.xaml"/>
+                <ResourceDictionary Source="Theme/TextEntryBlockTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
@@ -32,7 +31,6 @@
                 <view:SearchView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:AllGamesViewModel}">
-                <!--<view:AllGamesView/>-->
                 <view:TileWindowView/>
             </DataTemplate>
         </ResourceDictionary>

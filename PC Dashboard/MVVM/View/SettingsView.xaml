@@ -3,17 +3,70 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PC_Dashboard.MVVM.View"
+             xmlns:local="clr-namespace:PC_Dashboard.MVVM.View" 
+             xmlns:viewmodel="clr-namespace:PC_Dashboard.MVVM.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <Border Height="250"
-                Width="400"
-                Background="DarkSlateBlue"
-                CornerRadius="15">
-            <TextBlock Text="Settings screen placeholder"
-                       Foreground="White"
-                       HorizontalAlignment="Center"/>
-        </Border>
-    </StackPanel>
+    <Border Background="DarkGray"
+            Padding="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Height="40"
+                  Margin="0, 0, 0, 20">
+                <TextBlock FontSize="24"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Settings PLACEHOLDER - NOT IMPLEMENTED"
+                           Foreground="Black"
+                           FontWeight="Medium"/>
+            </Grid>
+            <ScrollViewer Grid.Row="1">
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Launchers" FontSize="18" FontWeight="Medium"/>
+                        <TextBlock Text="Launchers are detected automatically. If one isn't selected, it hasn't been detected. Select it here to try to add it. Uncheck an automatically detected one to ignore that launcher." 
+                                   TextWrapping="Wrap" 
+                                   Margin="0,0,0,10"/>
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Left" 
+                                    Margin="0,0,0,0">
+                            <CheckBox Content="Steam"/>
+                            <CheckBox Content="Xbox"/>
+                            <CheckBox Content="EA Launcher"/>
+                            <CheckBox Content="Battle.net"/>
+                            <CheckBox Content="Epic Games Store"/>
+                            <CheckBox Content="GOG Galaxy"/>
+                            <CheckBox Content="Itch.io"/>
+                            <CheckBox Content="Ubisoft"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border Width="Auto" 
+                            Background="Black"
+                            Height="3" 
+                            CornerRadius="1.5"
+                            Margin="0,5,0,5"/>
+                    <StackPanel>
+                        <TextBlock Text="Interface" FontSize="18" FontWeight="Medium"/>
+                        <TextBlock Text="Placeholder for interface customizations"/>
+                        <TextBox Style="{StaticResource TextEntryBlock}"/>
+                    </StackPanel>
+                    <Border Width="Auto" 
+                            Background="Black"
+                            Height="3" 
+                            CornerRadius="1.5"
+                            Margin="0,5,0,5"/>
+                    <StackPanel>
+                        <TextBlock Text="Application Settings" FontSize="18" FontWeight="Medium"/>
+                        <TextBlock Text="Placeholder for application settings"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+
+        </Grid>
+    </Border>
 </UserControl>

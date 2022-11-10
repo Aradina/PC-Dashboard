@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PC_Dashboard.MVVM.View"
+             xmlns:local="clr-namespace:PC_Dashboard.MVVM.View" 
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -23,7 +23,7 @@
                 </LinearGradientBrush>
             </Border.Background>
             <TextBox Grid.Row="0"
-                     Width="auto"
+                     Width="350"
                      Height="40"
                      Name="searchBox"
                      IsTabStop="False"
@@ -34,27 +34,12 @@
                      Grid.Column="1"
                      Style="{StaticResource TextInputBox}"/>
         </Border>
-        <StackPanel Grid.Row="1">
-            <Border Width="auto"
-                    Height="auto"
-                    Margin="5"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="BlueViolet"
-                    CornerRadius="15">
-                <TextBlock Text="Search page placeholder"
-                       Foreground="White"
-                       FontSize="25"
-                       HorizontalAlignment="Left"/>
-            </Border>
-            <Border Width="500"
-                    Height="500"
-                    Background="MediumPurple"
-                    Margin="5"/>
-            <Border Width="500"
-                    Height="500"
-                    Background="MediumPurple"
-                    Margin="5"/>
-        </StackPanel>
+        <ListView Style="{StaticResource GameTileList}"
+                  Grid.Row="1"
+                  ItemsSource="{Binding AllGames}"
+                  x:Name="TileListView"
+                  Focusable="False"
+                  IsTabStop="False"
+                  FocusManager.IsFocusScope="True"/>
     </Grid>
 </UserControl>

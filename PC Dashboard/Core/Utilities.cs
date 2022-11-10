@@ -12,6 +12,11 @@ namespace PC_Dashboard
     class Utilities
     {
 
+        public static void SearchList(List<Game> list, string searchValue)
+        {
+            List<Game> filteredList = list.Where(obj => obj.Name == searchValue).ToList();
+        }
+
         public static DateTimeOffset UnixToDateTime(int unixtime)
         {
             DateTimeOffset dt = DateTimeOffset.FromUnixTimeSeconds(unixtime);
@@ -22,7 +27,7 @@ namespace PC_Dashboard
 
         public static List<Game> ReadFromJson(string path)
         {
-            using (StreamReader file = new StreamReader(path))
+            using (StreamReader file = new(path))
             {
                 string json = file.ReadToEnd();
                 List<Game> apps = JsonConvert.DeserializeObject<List<Game>>(json);
@@ -61,8 +66,10 @@ namespace PC_Dashboard
 
             using (StreamWriter file = File.CreateText(path))
             {
-                JsonSerializer serializer = new();
-                serializer.Formatting = Newtonsoft.Json.Formatting.Indented;
+                JsonSerializer serializer = new()
+                {
+                    Formatting = Formatting.Indented
+                };
                 serializer.Serialize(file, apps);
             }
         }

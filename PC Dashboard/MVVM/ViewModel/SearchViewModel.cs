@@ -1,6 +1,11 @@
-﻿namespace PC_Dashboard.MVVM.ViewModel
+﻿
+namespace PC_Dashboard.MVVM.ViewModel
 {
-    internal class SearchViewModel
+    internal class SearchViewModel : BaseGameListViewModel
     {
+        public SearchViewModel() : base()
+        {
+
+        }
     }
 }

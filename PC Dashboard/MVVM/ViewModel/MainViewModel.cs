@@ -55,8 +55,7 @@ namespace PC_Dashboard.MVVM.ViewModel
         public MainViewModel()
         {
 
-            var observableList = new ObservableCollection<Game>(GamesList.Games);
-            Debug.WriteLine(observableList);
+            ObservableCollection<Game> observableList = new (GamesList.Games);
 
             HomeVM = new HomeViewModel();
 
@@ -73,7 +72,8 @@ namespace PC_Dashboard.MVVM.ViewModel
 
             SearchVM = new()
             {
-                AllGames = observableList
+                AllGames = observableList,
+                FilteredList = observableList,
             };
 
             CurrentView = HomeVM;

@@ -51,6 +51,7 @@ namespace PC_Dashboard.MVVM.Model
             }
             if (AvailableLaunchers.BattleNet)
             {
+                //Partially implemented.
                 gamesList.AddRange(BattleNetParser.Parse());
             }
             if (AvailableLaunchers.EpicGamesStore)
@@ -59,11 +60,11 @@ namespace PC_Dashboard.MVVM.Model
             }
             if (AvailableLaunchers.Itchio)
             {
-                //todo  
+                //Not implemented  
             }
             if (AvailableLaunchers.Ubisoft)
             {
-                //todo
+                //Not implemented
             }
             gamesList.Sort();
             for (int i = 0; i < gamesList.Count; i++)

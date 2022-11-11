@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace PC_Dashboard.MVVM.View
 {
@@ -11,5 +12,7 @@ namespace PC_Dashboard.MVVM.View
         {
             InitializeComponent();
         }
+
+        
     }
 }

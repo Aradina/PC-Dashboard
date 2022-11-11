@@ -31,7 +31,9 @@ namespace PC_Dashboard.MVVM.ViewModel
             {
                 using (RegistryKey subkey = regKey.OpenSubKey(subKeyName))
                 {
-                    if (subkey.GetValue("UninstallString") != null && subkey.GetValue("UninstallString").ToString().Contains(@"Battle.net\Agent"))
+                    //Unwieldy and probably better done in another way. Makes sure it exists, checks if the game is a battlenet game by checking for a part of the path to the uninstallers for battlenet games.
+                    //This has the issue of also getting the battle.net application itself, so we also filter that out. 
+                    if (subkey.GetValue("UninstallString") != null && subkey.GetValue("UninstallString").ToString().Contains(@"Battle.net\Agent") && subkey.GetValue("DisplayName").ToString() != "Battle.net")
                     {
                         Game BlizzardApp = new()
                         {

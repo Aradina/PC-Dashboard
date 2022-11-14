@@ -16,21 +16,12 @@ namespace PC_Dashboard.MVVM.ViewModel
     {
         public BaseGameListViewModel()
         {
-            if(IsInDesignMode == true)
+            if(Utilities.IsInDesignMode == true)
             {
                 var gameList = new GamesList();
                 AllGames = gameList.Games;
             }
         }
         public ObservableCollection<Game> AllGames { get; set; } 
-
-        public static bool IsInDesignMode
-        { 
-            get
-            {
-                return DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject());
-            } 
-        }
-
     }
 }

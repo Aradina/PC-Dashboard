@@ -1,5 +1,4 @@
-﻿
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 
@@ -7,7 +6,7 @@ namespace PC_Dashboard.MVVM.ViewModel
 {
     public class SearchViewModel : BaseGameListViewModel
     {
-        private ObservableCollection<Game> _FilteredList = new ObservableCollection<Game>();
+        private ObservableCollection<Game> _FilteredList = new();
         public ObservableCollection<Game> FilteredList 
         { 
             get => _FilteredList; 
@@ -38,7 +37,10 @@ namespace PC_Dashboard.MVVM.ViewModel
 
         public SearchViewModel() : base()
         {
-            
+            if(Utilities.IsInDesignMode)
+            {
+                FilteredList = AllGames;
+            }
         }
     }
 }

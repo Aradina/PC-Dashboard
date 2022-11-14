@@ -30,7 +30,7 @@ namespace PC_Dashboard.MVVM.ViewModel
                     LaunchAppGeneric(game);
                     break;
                 case 6:
-                    //LaunchBlizzardGame
+                    LaunchBlizzardGame(game);
                     break;
             }
         }
@@ -61,6 +61,30 @@ namespace PC_Dashboard.MVVM.ViewModel
             };
             Process.Start(processStartInfo);
         }
+        /// <summary>
+        /// Blizzard games can be launched directly through the exe, but that won't authenticate and the user would have to log in.
+        /// This avoids that problem by passing a launch parameter to the battle.net.exe executable.
+        /// The parameters vary between games and are magic strings over in the parser. This isn't perfect and may require updating.
+        /// It may also abruptly stop working, as older methods seem to have.
+        /// It also can't tell the difference between versions of Classic wow. But I don't think I can fix that.
+        /// </summary>
+        /// <param name="game">Game object for a blizzard game.</param>
 
+        static void LaunchBlizzardGame(Game game)
+        {
+            ProcessStartInfo processStartInfo = new()
+            {
+                FileName = game.Executable,
+                Arguments = game.LaunchParameters
+            };
+            if(game.LaunchParameters != "Not found.")
+            {
+                Process.Start(processStartInfo);
+            }
+            else
+            {
+                //put an error here indicating something went wrong. Currently fails silently.
+            }
+        }
     }
 }

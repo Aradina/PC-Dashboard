@@ -1,16 +1,35 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsDisplayAPI;
 
 namespace PC_Dashboard
 {
     class Utilities
     {
+
+
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                return DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject());
+            }
+        }
+
+        public static ObservableCollection<Display> GetMonitors()
+        {
+            ObservableCollection<Display> monitors = new ObservableCollection<Display>(Display.GetDisplays());
+            return monitors;
+        }
 
         public static void SearchList(List<Game> list, string searchValue)
         {

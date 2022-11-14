@@ -40,9 +40,9 @@
                 <Image Source="/Images/Icons/controllericon.png"
                        HorizontalAlignment="Left">
                 </Image>
-                <TextBlock Text="Aaaa" 
+                <TextBlock Text="Dashboard" 
                            VerticalAlignment="Center"
-                           FontSize="22"
+                           FontSize="24"
                            Foreground="White">
                     <TextBlock.Effect>
                         <DropShadowEffect ShadowDepth="1"
@@ -67,13 +67,6 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                    <RadioButton Content="Dashboard"
-                             Name="dashboardButton"
-                             GroupName="MenuButton"
-                             IsTabStop="True"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding DashboardViewCommand}"
-                             GotFocus="MenuButton_GotFocus"/>
                     <RadioButton Content="All Games"
                              Name="allButton"
                              GroupName="MenuButton"
@@ -81,29 +74,12 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding AllGamesViewCommand}"
                              GotFocus="MenuButton_GotFocus"/>
-                    <RadioButton Content="Categories"
-                             Name="categoriesButton"
-                             GroupName="MenuButton"
-                             IsTabStop="True"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding CategoriesViewCommand}"
-                             GotFocus="MenuButton_GotFocus"/>
                     <RadioButton Content="Search"
                              Name="searchButton"
                              GroupName="MenuButton"
                              IsTabStop="True"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding SearchViewCommand}"
-                             GotFocus="MenuButton_GotFocus"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" VerticalAlignment="Center">
-                    <RadioButton Content="What's New"
-                             Name="updatesButton"
-                             GroupName="MenuButton"
-                             IsTabStop="True"
-                             IsChecked="True"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding HomeViewCommand}"
                              GotFocus="MenuButton_GotFocus"/>
                     <RadioButton Content="Settings"
                              IsTabStop="True"

@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PC_Dashboard.MVVM.View" 
              xmlns:viewmodel="clr-namespace:PC_Dashboard.MVVM.ViewModel" 
-             d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodel:SettingsViewModel,IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Border Background="DarkGray"
             Padding="15">
         <Grid>
@@ -20,28 +21,28 @@
                 <TextBlock FontSize="24"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Text="Settings PLACEHOLDER - NOT IMPLEMENTED"
+                           Text="Settings and Information"
                            Foreground="Black"
                            FontWeight="Medium"/>
             </Grid>
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
                     <StackPanel>
-                        <TextBlock Text="Launchers" FontSize="18" FontWeight="Medium"/>
-                        <TextBlock Text="Launchers are detected automatically. If one isn't selected, it hasn't been detected. Select it here to try to add it. Uncheck an automatically detected one to ignore that launcher." 
+                        <TextBlock Text="Detected Launchers" FontSize="18" FontWeight="Medium"/>
+                        <TextBlock Text="Launchers are detected automatically. At least they're meant to be." 
                                    TextWrapping="Wrap" 
                                    Margin="0,0,0,10"/>
                         <StackPanel Orientation="Vertical"
                                     HorizontalAlignment="Left" 
                                     Margin="0,0,0,0">
-                            <CheckBox Content="Steam"/>
-                            <CheckBox Content="Xbox"/>
-                            <CheckBox Content="EA Launcher"/>
-                            <CheckBox Content="Battle.net"/>
-                            <CheckBox Content="Epic Games Store"/>
-                            <CheckBox Content="GOG Galaxy"/>
-                            <CheckBox Content="Itch.io"/>
-                            <CheckBox Content="Ubisoft"/>
+                            <CheckBox Content="Steam" x:Name="SteamCheckBox" IsEnabled="False"/>
+                            <CheckBox Content="Xbox" x:Name="XboxCheckBox" IsEnabled="False"/>
+                            <CheckBox Content="EA Launcher" x:Name="EACheckBox" IsEnabled="False"/>
+                            <CheckBox Content="Battle.net" x:Name="BlizzardCheckBox" IsEnabled="False"/>
+                            <CheckBox Content="Epic Games Store" x:Name="EpicCheckBox" IsEnabled="False"/>
+                            <CheckBox Content="GOG Galaxy" x:Name="GOGCheckBox" IsEnabled="False"/>
+                            <CheckBox Content="Itch.io" x:Name="ItchCheckBox" IsEnabled="False"/>
+                            <CheckBox Content="Ubisoft" x:Name="UbisoftCheckBox" IsEnabled="False"/>
                         </StackPanel>
                     </StackPanel>
                     <Border Width="Auto" 
@@ -50,9 +51,9 @@
                             CornerRadius="1.5"
                             Margin="0,5,0,5"/>
                     <StackPanel>
-                        <TextBlock Text="Interface" FontSize="18" FontWeight="Medium"/>
-                        <TextBlock Text="Placeholder for interface customizations"/>
-                        <TextBox Style="{StaticResource TextEntryBlock}"/>
+                        <TextBlock Text="Detected Displays." Foreground="Black" FontSize="18" FontWeight="Medium"/>
+                        <ListView ItemsSource="{Binding Screens}"
+                                  Style="{StaticResource ScreenDisplayList}"/>
                     </StackPanel>
                     <Border Width="Auto" 
                             Background="Black"

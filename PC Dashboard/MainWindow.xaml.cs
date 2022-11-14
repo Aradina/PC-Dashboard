@@ -1,4 +1,5 @@
-﻿using PC_Dashboard.MVVM.ViewModel;
+﻿using PC_Dashboard.MVVM.Model;
+using PC_Dashboard.MVVM.ViewModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
@@ -18,6 +19,12 @@ namespace PC_Dashboard
         public MainWindow()
         {
             InitializeComponent();
+
+            FileBrowser fileBrowser= new FileBrowser();
+
+            fileBrowser.Go();
+
+            Utilities.GetMonitors();
 
             SourceInitialized += (_, _) => CompositionTarget.Rendering += (_, _) => OnRendering();
             Loaded += MainWindow_Loaded;
@@ -120,6 +127,9 @@ namespace PC_Dashboard
                 case "TileListView":
                     allButton.Focus();
                     break;
+                case "SearchListView":
+                    searchButton.Focus();
+                    break;
             }
         }
 
@@ -149,7 +159,7 @@ namespace PC_Dashboard
         /// </summary>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            updatesButton.Focus();
+            allButton.Focus();
         }
         /// <summary>
         /// XInputium: Fires when a device is connected.

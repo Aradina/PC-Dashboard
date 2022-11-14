@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using WindowsDisplayAPI;
 
 namespace PC_Dashboard.MVVM.ViewModel
 {
@@ -24,6 +25,8 @@ namespace PC_Dashboard.MVVM.ViewModel
         public RelayCommand ExitProgramCommand { get; set; }
 
         public RelayCommand GameLauncherCommand { get; set; }
+
+        public RelayCommand DisableAllMonitors { get; set; }
 
 
         public HomeViewModel HomeVM { get; set; }
@@ -66,7 +69,10 @@ namespace PC_Dashboard.MVVM.ViewModel
                 AllGames = observableList
             };
 
-            SettingsVM = new SettingsViewModel();
+            SettingsVM = new SettingsViewModel()
+            {
+                Screens = Utilities.GetMonitors(),
+            };
 
             CategoriesVM = new CategoriesViewModel();
 
@@ -124,6 +130,15 @@ namespace PC_Dashboard.MVVM.ViewModel
                 }
                 Game game = (Game)o;
                 GameLauncher.LaunchGame(game);
+            });
+
+            DisableAllMonitors = new RelayCommand(o => 
+            {
+                if(o is not null)
+                {
+                    Display display = (Display)o;
+                    SetMonitors.DisableAllMonitorsExceptSelected(display);
+                }
             });
 
         }

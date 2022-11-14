@@ -11,36 +11,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Background="Transparent"
-                          x:Name="ListButtonBackground"
-                          Focusable="False"
-                          Opacity="0.7">
-                        <ContentPresenter Focusable="False"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation Duration="0:0:0.5" From="0.7" To="1" Storyboard.TargetName="ListButtonBackground" Storyboard.TargetProperty="Opacity"/>
-                                    <ColorAnimation Duration="0:0:0.5" Storyboard.TargetName="ListButtonBackground" Storyboard.TargetProperty="Background.Color" To="#3498db"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="UIElement.LostKeyboardFocus">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation Duration="0:0:0.5" From="1" To="0.7" Storyboard.TargetName="ListButtonBackground" Storyboard.TargetProperty="Opacity"/>
-                                    <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="ListButtonBackground" Storyboard.TargetProperty="Background.Color" To="Transparent"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>
+                    <ContentPresenter Focusable="False"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="Focusable" Value="True"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="Transparent"/>
     </Style>
     <Style TargetType="ListView" x:Key="GameTileList">
         <Setter Property="Background" Value="Transparent"/>
@@ -68,62 +43,84 @@
             <Setter.Value>
                 <ItemsPanelTemplate>
                     <wpftk:VirtualizingWrapPanel Orientation="Vertical" 
-                                              Focusable="False"/>
+                                                 Focusable="False"/>
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Button Foreground="Transparent"
+                    <Border Background="#11aaee" 
+                            BorderBrush="Transparent" 
+                            BorderThickness="0"
+                            CornerRadius="5"
+                            Margin="2,2,2,3"
+                            Opacity="1"
+                            x:Name="ButtonBackgroundBorder">
+                        <Button Foreground="Transparent"
                             Background="Black"
-                            BorderBrush="Transparent"
                             Height="225"
                             Width="150"
-                            Margin="5,10,5,5"
+                            Margin="4,4,4,4"
                             FocusVisualStyle="{x:Null}"
                             Style="{StaticResource ListButtonStyle}"
+                            Opacity="0.9"
                             x:Name="GameListButton"
                             Focusable="True"
                             IsTabStop="True"
                             CommandParameter="{Binding}"
                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.GameLauncherCommand}">
-                        <Grid>
-                            <Grid.CacheMode>
-                                <BitmapCache/>
-                            </Grid.CacheMode>
-                            <Image Focusable="False">
-                                <Image.Source>
-                                    <BitmapImage UriSource="{Binding LibraryCard}"
-                                                 DecodePixelWidth="150"
-                                                 CacheOption="None"/>
-                                </Image.Source>
-                                <Image.Effect>
-                                    <BlurEffect/>
-                                </Image.Effect>
-                            </Image>
-                            <VirtualizingStackPanel Background="Transparent" 
+                            <Grid>
+                                <Grid.CacheMode>
+                                    <BitmapCache/>
+                                </Grid.CacheMode>
+                                <Image Focusable="False"
+                                       Source="{Binding Path=LibraryCardImageSource}">
+                                    <Image.Effect>
+                                        <BlurEffect/>
+                                    </Image.Effect>
+                                </Image>
+                                <VirtualizingStackPanel Background="Transparent" 
                                                     Margin="5,5,2,0"
                                                     Focusable="False">
-                                <TextBlock Text="{Binding Name}" 
+                                    <TextBlock Text="{Binding Name}" 
                                            Foreground="White" 
                                            FontSize="18" 
                                            TextWrapping="Wrap"
                                            FontWeight="Medium">
-                                    <TextBlock.Effect>
-                                        <DropShadowEffect ShadowDepth="3"/>
-                                    </TextBlock.Effect>
-                                </TextBlock>
-                                <TextBlock Text="{Binding InstalledDate}" 
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect ShadowDepth="3"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding InstalledDate}" 
                                            Foreground="White" 
                                            FontSize="14">
-                                    <TextBlock.Effect>
-                                        <DropShadowEffect ShadowDepth="2"/>
-                                    </TextBlock.Effect>
-                                </TextBlock>
-                            </VirtualizingStackPanel>
-                        </Grid>
-                    </Button>
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect ShadowDepth="2"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                </VirtualizingStackPanel>
+                            </Grid>
+                        </Button>
+                    </Border>
+                    <DataTemplate.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.GotKeyboardFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.5" From="0.9" To="1" Storyboard.TargetName="GameListButton" Storyboard.TargetProperty="Opacity"/>
+                                    <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="ButtonBackgroundBorder" Storyboard.TargetProperty="Background.Color" To="#EE5511"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.LostKeyboardFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.5" From="1" To="0.9" Storyboard.TargetName="GameListButton" Storyboard.TargetProperty="Opacity"/>
+                                    <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="ButtonBackgroundBorder" Storyboard.TargetProperty="Background.Color" To="#11aaee"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </Setter.Value>
         </Setter>

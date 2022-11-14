@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace PC_Dashboard
 {
@@ -30,6 +32,34 @@ namespace PC_Dashboard
                 return 1;
             }
             return string.Compare(this.Name, other.Name);
+        }
+
+
+        //Gets the image for use in binding. This is to fix an obscure error in the XAML.
+        public object LibraryCardImageSource 
+        { 
+            get 
+            {
+                BitmapImage image = new();
+
+                try
+                {
+                    image.BeginInit();
+                    image.CacheOption= BitmapCacheOption.OnLoad;
+                    image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    image.UriSource = new Uri(LibraryCard);
+                    image.DecodePixelHeight = 225;
+                    //Not all images are the right aspect ratio for this. 
+                    //Setting just the heigh causes it to letterbox, which is prefered over weird stretching
+                    //image.DecodePixelWidth = 150;
+                    image.EndInit();
+                }
+                catch
+                {
+                    return DependencyProperty.UnsetValue;
+                }
+                return image;
+            } 
         }
     }
 }
